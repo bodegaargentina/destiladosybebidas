@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bodega Argentina | Destilados y Bebidas</title>
+    
+    <!-- Tipografías de Marca -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Paleta Institucional de Marca */
+            --bg-base: #F2E9CE;          /* Crema cálido */
+            --brand-primary: #4E6A79;    /* Azul verdoso apagado */
+            --accent-pink: #F7ADAF;      /* Rosa suave */
+            --accent-ginger: #D5C765;    /* Mostaza / Amarillo verdoso */
+            --accent-exp: #E6E7E8;       /* Gris plata */
+            --text-dark: #2B3A42;        /* Texto de lectura */
+            --white: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-dark);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Tipografía de Títulos */
+        h1, h2, h3, h4, .serif {
+            font-family: 'Playfair Display', serif;
+            color: var(--brand-primary);
+        }
+
+        /* Cabecera / Navegación */
+        header {
+            background-color: var(--bg-base);
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(78, 106, 121, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand-header-title {
+            font-size: 2.2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--brand-primary);
+            line-height: 1.1;
+        }
+
+        .brand-header-subtitle {
+            font-size: 1.05rem;
+            letter-spacing: 2px;
+            text-transform: lowercase;
+            margin-top: 4px;
+            font-weight: 400;
+            color: var(--brand-primary);
+        }
+
+        nav {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--brand-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: opacity 0.2s;
+        }
+
+        nav a:hover {
+            opacity: 0.7;
+        }
+
+        /* Sección Hero / Portada */
+        .hero {
+            padding: 80px 20px 60px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 2.4rem;
+            margin-bottom: 25px;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-dark);
+            max-width: 780px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-tagline {
+            display: inline-block;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            color: var(--brand-primary);
+            border-top: 1px solid var(--brand-primary);
+            border-bottom: 1px solid var(--brand-primary);
+            padding: 8px 16px;
+        }
+
+        /* Contenedor Global */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.1rem;
+            margin: 80px 0 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Grilla de Productos (Gins) */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--bg-base);
+            border: 2px solid var(--brand-primary);
+            border-radius: 8px;
+            padding: 35px 25px 25px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        /* Ajuste para Gin Experimental con fondo #E6E7E8 */
+        .product-card.card-experimental {
+            background-color: var(--accent-exp);
+        }
+
+        .product-accent-line {
+            height: 6px;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+
+        .line-dry { background-color: var(--brand-primary); }
+        .line-pink { background-color: var(--accent-pink); }
+        .line-ginger { background-color: var(--accent-ginger); }
+        .line-exp { background-color: #A0A5A8; }
+
+        .product-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            margin-top: 10px;
+        }
+
+        .product-card p {
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+        }
+
+        .product-specs {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--brand-primary);
+            border-top: 1px solid rgba(78, 106, 121, 0.25);
+            padding-top: 15px;
+            letter-spacing: 1px;
+        }
+
+        /* Sección Filosofía y Pilares */
+        .pillars-section {
+            background-color: rgba(78, 106, 121, 0.06);
+            padding: 80px 20px;
+            margin-top: 90px;
+            border-top: 1px solid rgba(78, 106, 121, 0.15);
+            border-bottom: 1px solid rgba(78, 106, 121, 0.15);
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+        }
+
+        .pillar-item {
+            text-align: center;
+            padding: 15px;
+        }
+
+        .pillar-item h4 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .pillar-item p {
+            font-size: 0.95rem;
+        }
+
+        /* Cajas y Formatos */
+        .boxes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .box-card {
+            background: var(--white);
+            padding: 35px 25px;
+            border-radius: 8px;
+            border: 1px solid rgba(78, 106, 121, 0.2);
+            text-align: center;
+        }
+
+        .box-card h4 {
+            font-size: 1.35rem;
+            margin-bottom: 12px;
+        }
+
+        .box-card p {
+            font-size: 0.95rem;
+        }
+
+        /* Pie de Página Institucional */
+        footer {
+            background-color: var(--brand-primary);
+            color: var(--bg-base);
+            text-align: center;
+            padding: 70px 20px 40px;
+            margin-top: 90px;
+        }
+
+        footer h3 {
+            color: var(--bg-base);
+            font-size: 2rem;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+        }
+
+        footer .footer-sub {
+            color: var(--bg-base);
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .footer-tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            margin: 25px 0;
+            font-size: 1.2rem;
+            color: var(--bg-base);
+        }
+
+        .footer-location {
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            opacity: 0.95;
+        }
+
+        .footer-meta {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-top: 40px;
+            border-top: 1px solid rgba(242, 233, 206, 0.2);
+            padding-top: 25px;
+        }
+
+        /* Responsividad para Celulares (Android e iOS) */
+        @media (max-width: 768px) {
+            .brand-header-title {
+                font-size: 1.8rem;
+                letter-spacing: 2px;
+            }
+            
+            .brand-header-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.7rem;
+                margin: 60px 0 30px;
+            }
+
+            nav {
+                gap: 12px;
+            }
+
+            nav a {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABECERA -->
+    <header>
+        <div class="brand-header-title">Bodega Argentina</div>
+        <div class="brand-header-subtitle">destilados y bebidas</div>
+        <nav>
+            <a href="#historia">Nosotros</a>
+            <a href="#gins">Gins</a>
+            <a href="#filosofia">Filosofía</a>
+            <a href="#formatos">Formatos</a>
+        </nav>
+    </header>
+
+    <!-- PORTADA / SOBRE NOSOTROS -->
+    <section class="hero" id="historia">
+        <h2>"Tradición argentina, destilados con alma"</h2>
+        <p>BODEGA ARGENTINA nace en 2025 en La Plata, Buenos Aires, con una premisa clara: la búsqueda de un destilado de calidad superior y una innovación sin igual. No seguimos recetas preexistentes. Cada una de nuestras líneas es el resultado de una exploración constante de botánicos, perfiles sensoriales y técnicas de destilación en alambique de cobre.</p>
+        <div class="hero-tagline">Del suelo argentino a tu copa</div>
+    </section>
+
+    <!-- SECCIÓN DE PRODUCTOS (GINS) -->
+    <main class="container" id="gins">
+        <h2 class="section-title">Nuestros Gins</h2>
+        <div class="products-grid">
+            
+            <!-- Dry Gin Contemporáneo -->
+            <div class="product-card">
+                <div class="product-accent-line line-dry"></div>
+                <div>
+                    <h3>Dry Gin Contemporáneo</h3>
+                    <p>Un gin de carácter seco y equilibrado, donde el enebro se expresa con claridad acompañado por notas cítricas y especiadas. De perfil limpio y definido, ofrece una estructura firme ideal tanto para coctelería clásica como para propuestas modernas.</p>
+                </div>
+                <div class="product-specs">500 ML | 45% ABV | LA PLATA</div>
+            </div>
+
+            <!-- Gin Pink -->
+            <div class="product-card">
+                <div class="product-accent-line line-pink"></div>
+                <div>
+                    <h3>Gin Pink</h3>
+                    <p>Una expresión fresca y aromática en la que el hibiscus aporta su color natural y un delicado carácter. Las notas florales se integran con matices cítricos, dando lugar a un perfil ligero, equilibrado y refrescante.</p>
+                </div>
+                <div class="product-specs">500 ML | 45% ABV | LA PLATA</div>
+            </div>
+
+            <!-- Gin Ginger -->
+            <div class="product-card">
+                <div class="product-accent-line line-ginger"></div>
+                <div>
+                    <h3>Gin Ginger</h3>
+                    <p>Un gin vibrante y expresivo, donde los cítricos se combinan con jengibre que aporta energía y un sutil picante. Su perfil moderno ofrece una entrada fresca y un final suave, cálido y especiado.</p>
+                </div>
+                <div class="product-specs">500 ML | 45% ABV | LA PLATA</div>
+            </div>
+
+            <!-- Gin Experimental -->
+            <div class="product-card card-experimental">
+                <div class="product-accent-line line-exp"></div>
+                <div>
+                    <h3>Gin Experimental</h3>
+                    <p>Una edición especial pensada para explorar nuevas combinaciones botánicas y perfiles innovadores. Elaborado con ingredientes no tradicionales, cada lote presenta una identidad propia, destacándose por su complejidad.</p>
+                </div>
+                <div class="product-specs">500 ML | 45% ABV | LA PLATA</div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FILOSOFÍA Y PILARES -->
+    <section class="pillars-section" id="filosofia">
+        <div class="container">
+            <h2 class="section-title" style="margin-top: 0;">Filosofía de Destilación</h2>
+            <div class="pillars-grid">
+                <div class="pillar-item">
+                    <h4>Alambique de Cobre</h4>
+                    <p>Destilación lenta que preserva minuciosamente los aceites esenciales de los botánicos.</p>
+                </div>
+                <div class="pillar-item">
+                    <h4>Botánicos Seleccionados</h4>
+                    <p>Selección manual de ingredientes sin aditivos artificiales. Colores y aromas 100% naturales.</p>
+                </div>
+                <div class="pillar-item">
+                    <h4>Origen La Plata</h4>
+                    <p>ADN argentino con compromiso directo con el producto local y proveedores de la región.</p>
+                </div>
+                <div class="pillar-item">
+                    <h4>Concepto Bodega</h4>
+                    <p>Lugar de guarda, almacenamiento y resguardo de producciones propias y seleccionadas de terceros.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMATOS DE CAJAS -->
+    <section class="container" id="formatos">
+        <h2 class="section-title">Formatos de Presentación</h2>
+        <div class="boxes-grid">
+            <div class="box-card">
+                <h4>Caja 4 Unidades</h4>
+                <p>Ideal para regalo corporativo, degustación inicial y presentación en eventos pequeños.</p>
+            </div>
+            <div class="box-card">
+                <h4>Caja 6 Unidades</h4>
+                <p>Pensada para home bar, reuniones familiares y abastecimiento de restaurantes.</p>
+            </div>
+            <div class="box-card">
+                <h4>Caja 8 Unidades</h4>
+                <p>Presentación para regalos premium, eventos de alta gama y barras profesionales.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CIERRE INSTITUCIONAL -->
+    <footer>
+        <h3>BODEGA ARGENTINA</h3>
+        <div class="footer-sub">destilados y bebidas</div>
+        <p class="footer-tagline">"Del suelo argentino a tu copa"</p>
+        <p class="footer-location">La Plata, Buenos Aires, Argentina</p>
+        <div class="footer-meta">
+            © 2026 BODEGA ARGENTINA - Todos los derechos reservados
+        </div>
+    </footer>
+
+</body>
+</html>
