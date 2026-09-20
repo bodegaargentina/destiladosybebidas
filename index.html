@@ -284,6 +284,7 @@
             flex-direction: column;
             justify-content: space-between;
             position: relative;
+            overflow: hidden;
         }
 
         /* Ajuste para Gin Experimental con fondo #E6E7E8 */
@@ -305,6 +306,16 @@
         .line-pink { background-color: var(--accent-pink); }
         .line-ginger { background-color: var(--accent-ginger); }
         .line-exp { background-color: #A0A5A8; }
+
+        /* Foto de cada botella */
+        .product-image {
+            width: 100%;
+            max-width: 220px;
+            height: 260px;
+            object-fit: contain;
+            margin: 10px auto 20px;
+            display: block;
+        }
 
         .product-card h3 {
             font-size: 1.6rem;
@@ -459,6 +470,10 @@
             .age-gate-box {
                 padding: 40px 22px 32px;
             }
+
+            .product-image {
+                height: 220px;
+            }
         }
     </style>
 </head>
@@ -514,6 +529,7 @@
             <!-- Dry Gin Contemporáneo -->
             <div class="product-card">
                 <div class="product-accent-line line-dry"></div>
+                <img src="img/contemporaneo.png" alt="Botella Dry Gin Contemporáneo - Bodega Argentina" class="product-image">
                 <div>
                     <h3>Dry Gin Contemporáneo</h3>
                     <p>Un gin de carácter seco y equilibrado, donde el enebro se expresa con claridad acompañado por notas cítricas y especiadas. De perfil limpio y definido, ofrece una estructura firme ideal tanto para coctelería clásica como para propuestas modernas.</p>
@@ -524,6 +540,7 @@
             <!-- Gin Pink -->
             <div class="product-card">
                 <div class="product-accent-line line-pink"></div>
+                <img src="img/pink.png" alt="Botella Gin Pink - Bodega Argentina" class="product-image">
                 <div>
                     <h3>Gin Pink</h3>
                     <p>Una expresión fresca y aromática en la que el hibiscus aporta su color natural y un delicado carácter. Las notas florales se integran con matices cítricos, dando lugar a un perfil ligero, equilibrado y refrescante.</p>
@@ -534,6 +551,7 @@
             <!-- Gin Ginger -->
             <div class="product-card">
                 <div class="product-accent-line line-ginger"></div>
+                <img src="img/ginger.png" alt="Botella Gin Ginger - Bodega Argentina" class="product-image">
                 <div>
                     <h3>Gin Ginger</h3>
                     <p>Un gin vibrante y expresivo, donde los cítricos se combinan con jengibre que aporta energía y un sutil picante. Su perfil moderno ofrece una entrada fresca y un final suave, cálido y especiado.</p>
@@ -544,6 +562,7 @@
             <!-- Gin Experimental -->
             <div class="product-card card-experimental">
                 <div class="product-accent-line line-exp"></div>
+                <img src="img/experimental.png" alt="Botella Gin Experimental - Bodega Argentina" class="product-image">
                 <div>
                     <h3>Gin Experimental</h3>
                     <p>Una edición especial pensada para explorar nuevas combinaciones botánicas y perfiles innovadores. Elaborado con ingredientes no tradicionales, cada lote presenta una identidad propia, destacándose por su complejidad.</p>
