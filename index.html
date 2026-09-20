@@ -13,13 +13,18 @@
     <style>
         :root {
             /* Paleta Institucional de Marca */
-            --bg-base: #F2E9CE;          /* Crema cálido */
+            --bg-base: #FFFFFF;          /* Blanco */
             --brand-primary: #4E6A79;    /* Azul verdoso apagado */
             --accent-pink: #F7ADAF;      /* Rosa suave */
             --accent-ginger: #D5C765;    /* Mostaza / Amarillo verdoso */
             --accent-exp: #E6E7E8;       /* Gris plata */
             --text-dark: #2B3A42;        /* Texto de lectura */
             --white: #FFFFFF;
+
+            /* Fondos pastel de cada tarjeta de gin, a tono con su línea */
+            --card-dry-bg: #E1E9EC;      /* Celeste verdoso suave */
+            --card-pink-bg: #FBDADB;     /* Rosado suave */
+            --card-ginger-bg: #EFE8B8;   /* Amarillento suave */
         }
 
         * {
@@ -287,7 +292,19 @@
             overflow: hidden;
         }
 
-        /* Ajuste para Gin Experimental con fondo #E6E7E8 */
+        /* Fondo de cada tarjeta según su línea de producto */
+        .product-card.card-dry {
+            background-color: var(--card-dry-bg);
+        }
+
+        .product-card.card-pink {
+            background-color: var(--card-pink-bg);
+        }
+
+        .product-card.card-ginger {
+            background-color: var(--card-ginger-bg);
+        }
+
         .product-card.card-experimental {
             background-color: var(--accent-exp);
         }
@@ -527,7 +544,7 @@
         <div class="products-grid">
             
             <!-- Dry Gin Contemporáneo -->
-            <div class="product-card">
+            <div class="product-card card-dry">
                 <div class="product-accent-line line-dry"></div>
                 <img src="img/contemporaneo.png" alt="Botella Dry Gin Contemporáneo - Bodega Argentina" class="product-image">
                 <div>
@@ -538,7 +555,7 @@
             </div>
 
             <!-- Gin Pink -->
-            <div class="product-card">
+            <div class="product-card card-pink">
                 <div class="product-accent-line line-pink"></div>
                 <img src="img/pink.png" alt="Botella Gin Pink - Bodega Argentina" class="product-image">
                 <div>
@@ -549,7 +566,7 @@
             </div>
 
             <!-- Gin Ginger -->
-            <div class="product-card">
+            <div class="product-card card-ginger">
                 <div class="product-accent-line line-ginger"></div>
                 <img src="img/ginger.png" alt="Botella Gin Ginger - Bodega Argentina" class="product-image">
                 <div>
