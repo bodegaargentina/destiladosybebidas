@@ -192,10 +192,27 @@
             line-height: 1.1;
         }
 
+        /* Logo */
+        .site-logo {
+            width: 100%;
+            max-width: 220px;
+            height: auto;
+            margin: 0 auto 8px;
+            display: block;
+        }
+
+        .footer-logo {
+            width: 100%;
+            max-width: 170px;
+            height: auto;
+            margin: 0 auto 18px;
+            display: block;
+            opacity: 0.95;
+        }
+
         .brand-header-subtitle {
             font-size: 1.05rem;
             letter-spacing: 2px;
-            text-transform: lowercase;
             margin-top: 4px;
             font-weight: 400;
             color: var(--brand-primary);
@@ -255,6 +272,85 @@
             border-top: 1px solid var(--brand-primary);
             border-bottom: 1px solid var(--brand-primary);
             padding: 8px 16px;
+        }
+
+        /* Animación de botella con líquido al hacer scroll (fija al costado) */
+        .bottle-fixed-position {
+            position: fixed;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 400;
+            pointer-events: none;
+        }
+
+        .bottle-animation-wrap {
+            opacity: 0;
+            transform: translateY(-15px);
+            animation: bottleFadeIn 1.1s ease forwards 0.3s;
+        }
+
+        @keyframes bottleFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .bottle-svg {
+            width: 110px;
+            height: auto;
+            overflow: visible;
+        }
+
+        .bottle-liquid {
+            transition: y 0.1s linear, height 0.1s linear;
+        }
+
+        .bottle-drop {
+            opacity: 0;
+        }
+
+        .bottle-overflow {
+            transition: height 0.1s linear;
+        }
+
+        .bottle-spill-drop {
+            opacity: 0;
+        }
+
+        .bottle-spill-drop.active {
+            animation: dripFall 1.3s ease-in infinite;
+        }
+
+        @keyframes dripFall {
+            0% {
+                transform: translateY(0);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(55px);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .bottle-svg {
+                width: 80px;
+            }
+
+            .bottle-fixed-position {
+                left: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .bottle-fixed-position {
+                display: none;
+            }
         }
 
         /* Contenedor Global */
@@ -355,13 +451,61 @@
             letter-spacing: 1px;
         }
 
+        /* Sección de foto ambientada (banner ancho) */
+        .lifestyle-banner {
+            position: relative;
+            margin-top: 90px;
+            min-height: 420px;
+            background-image:
+                linear-gradient(rgba(43,58,66,0.35), rgba(43,58,66,0.55)),
+                url('img/nombrerelleno.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .lifestyle-banner h2 {
+            color: var(--white);
+            font-size: 2.2rem;
+            font-style: italic;
+            font-weight: 400;
+            max-width: 650px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .lifestyle-banner {
+                min-height: 320px;
+            }
+
+            .lifestyle-banner h2 {
+                font-size: 1.6rem;
+            }
+        }
+
         /* Sección Filosofía y Pilares */
         .pillars-section {
-            background-color: rgba(78, 106, 121, 0.06);
+            position: relative;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
+                url('img/aparatodedestilacioaldetalle.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             padding: 80px 20px;
             margin-top: 90px;
             border-top: 1px solid rgba(78, 106, 121, 0.15);
             border-bottom: 1px solid rgba(78, 106, 121, 0.15);
+        }
+
+        @media (max-width: 768px) {
+            .pillars-section {
+                background-attachment: scroll;
+            }
         }
 
         .pillars-grid {
@@ -528,6 +672,18 @@
                 font-size: 0.95rem;
             }
 
+            .site-logo {
+                max-width: 160px;
+            }
+
+            .footer-logo {
+                max-width: 130px;
+            }
+
+            .hero {
+                padding: 50px 20px 40px;
+            }
+
             .hero h2 {
                 font-size: 1.8rem;
             }
@@ -556,6 +712,45 @@
             .product-image {
                 height: 220px;
             }
+
+            .pillars-section {
+                padding: 50px 20px;
+            }
+
+            .footer-tagline {
+                font-size: 1.05rem;
+            }
+        }
+
+        /* Ajustes extra para pantallas muy chicas */
+        @media (max-width: 420px) {
+            header {
+                padding: 22px 15px;
+            }
+
+            .site-logo {
+                max-width: 130px;
+            }
+
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .product-card {
+                padding: 28px 18px 20px;
+            }
+
+            .lifestyle-banner h2 {
+                font-size: 1.3rem;
+            }
+
+            footer {
+                padding: 50px 15px 30px;
+            }
         }
     </style>
 </head>
@@ -565,7 +760,7 @@
     <div class="age-gate-overlay" id="age-gate">
         <div class="age-gate-box">
             <div class="brand-header-title" style="font-size:1.6rem;">Bodega Argentina</div>
-            <div class="brand-header-subtitle" style="font-size:0.9rem;">destilados y bebidas</div>
+            <div class="brand-header-subtitle" style="font-size:0.9rem;">Destilados y Bebidas</div>
 
             <div id="age-gate-question-view">
                 <p class="age-gate-question">¿Tenés más de 18 años?</p>
@@ -586,8 +781,8 @@
 
     <!-- CABECERA -->
     <header>
-        <div class="brand-header-title">Bodega Argentina</div>
-        <div class="brand-header-subtitle">destilados y bebidas</div>
+        <img src="img/logoestirado.png" alt="Bodega Argentina - Destilados y Bebidas" class="site-logo">
+        <div class="brand-header-subtitle">Destilados y Bebidas</div>
         <nav>
             <a href="#historia">Nosotros</a>
             <a href="#gins">Gins</a>
@@ -598,6 +793,39 @@
 
     <!-- PORTADA / SOBRE NOSOTROS -->
     <section class="hero" id="historia">
+        <div class="bottle-fixed-position">
+            <div class="bottle-animation-wrap">
+                <svg class="bottle-svg" viewBox="0 0 200 460" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <clipPath id="bottleClip">
+                            <path d="M78,10 L122,10 L122,55 L152,100 Q158,108 158,120 L158,375 Q158,392 141,392 L59,392 Q42,392 42,375 L42,120 Q42,108 48,100 L78,55 Z"/>
+                        </clipPath>
+                    </defs>
+
+                    <!-- Líquido que sube con el scroll -->
+                    <rect class="bottle-liquid" x="0" y="392" width="200" height="0" fill="var(--brand-primary)" clip-path="url(#bottleClip)"></rect>
+
+                    <!-- Gotas internas mientras se llena -->
+                    <circle class="bottle-drop" cx="100" cy="60" r="4" fill="var(--brand-primary)"></circle>
+                    <circle class="bottle-drop" cx="88" cy="80" r="3" fill="var(--brand-primary)"></circle>
+
+                    <!-- Silueta / contorno de la botella -->
+                    <path d="M78,10 L122,10 L122,55 L152,100 Q158,108 158,120 L158,375 Q158,392 141,392 L59,392 Q42,392 42,375 L42,120 Q42,108 48,100 L78,55 Z"
+                          fill="none" stroke="var(--brand-primary)" stroke-width="5" stroke-linejoin="round"></path>
+
+                    <!-- Tapa -->
+                    <rect x="82" y="0" width="36" height="14" rx="3" fill="var(--brand-primary)"></rect>
+
+                    <!-- Derrame: chorrito que se desborda por la boca cuando se llena del todo -->
+                    <rect class="bottle-overflow" x="93" y="10" width="14" height="0" rx="5" fill="var(--brand-primary)" opacity="0.85"></rect>
+
+                    <!-- Gotas que caen fuera de la botella (derrame continuo) -->
+                    <circle class="bottle-spill-drop" cx="100" cy="18" r="4" fill="var(--brand-primary)"></circle>
+                    <circle class="bottle-spill-drop" cx="100" cy="18" r="3.5" fill="var(--brand-primary)" style="animation-delay: 0.4s;"></circle>
+                    <circle class="bottle-spill-drop" cx="100" cy="18" r="3" fill="var(--brand-primary)" style="animation-delay: 0.8s;"></circle>
+                </svg>
+            </div>
+        </div>
         <h2>"Tradición argentina, destilados con alma"</h2>
         <p>BODEGA ARGENTINA nace en 2025 en La Plata, Buenos Aires, con una premisa clara: la búsqueda de un destilado de calidad superior y una innovación sin igual. No seguimos recetas preexistentes. Cada una de nuestras líneas es el resultado de una exploración constante de botánicos, perfiles sensoriales y técnicas de destilación en alambique de cobre.</p>
         <div class="hero-tagline">Del suelo argentino a tu copa</div>
@@ -699,10 +927,15 @@
         </div>
     </section>
 
+    <!-- FOTO AMBIENTADA -->
+    <section class="lifestyle-banner">
+        <h2>"Un Gin Pink fresco, con pomelo, es toda una experiencia"</h2>
+    </section>
+
     <!-- CIERRE INSTITUCIONAL -->
     <footer>
-        <h3>BODEGA ARGENTINA</h3>
-        <div class="footer-sub">destilados y bebidas</div>
+        <img src="img/logoestirado.png" alt="Bodega Argentina - Destilados y Bebidas" class="footer-logo">
+        <div class="footer-sub">Destilados y Bebidas</div>
         <p class="footer-tagline">"Del suelo argentino a tu copa"</p>
         <p class="footer-location">La Plata, Buenos Aires, Argentina</p>
 
@@ -756,6 +989,47 @@
                 document.getElementById('age-gate-question-view').style.display = 'none';
                 document.getElementById('age-gate-blocked-view').classList.add('show');
             });
+        })();
+
+        // Animación: la botella se llena de líquido a medida que se hace scroll
+        (function () {
+            var liquid = document.querySelector('.bottle-liquid');
+            var drops = document.querySelectorAll('.bottle-drop');
+            var overflow = document.querySelector('.bottle-overflow');
+            var spillDrops = document.querySelectorAll('.bottle-spill-drop');
+            if (!liquid) return;
+
+            var maxHeight = 392; // alto interno máximo del líquido dentro de la botella
+            var scrollRange = window.innerHeight * 1.1; // en cuántos px de scroll se llena del todo
+
+            function updateBottle() {
+                var progress = Math.min(Math.max(window.scrollY / scrollRange, 0), 1);
+                var liquidHeight = maxHeight * progress;
+                liquid.setAttribute('y', 392 - liquidHeight);
+                liquid.setAttribute('height', liquidHeight);
+
+                // Las gotitas internas se ven mientras se está llenando
+                var showDrops = progress > 0.03 && progress < 0.97;
+                drops.forEach(function (drop, i) {
+                    drop.style.opacity = showDrops ? (0.85 - i * 0.2) : 0;
+                });
+
+                // Derrame: cuando llega casi al tope, empieza a rebalsar por la boca
+                var overflowProgress = Math.min(Math.max((progress - 0.85) / 0.15, 0), 1);
+                if (overflow) {
+                    overflow.setAttribute('height', overflowProgress * 45);
+                }
+                spillDrops.forEach(function (drop) {
+                    drop.classList.toggle('active', overflowProgress > 0.5);
+                });
+            }
+
+            window.addEventListener('scroll', updateBottle, { passive: true });
+            window.addEventListener('resize', function () {
+                scrollRange = window.innerHeight * 1.1;
+                updateBottle();
+            });
+            updateBottle();
         })();
     </script>
     <!-- BOTÓN FLOTANTE DE WHATSAPP -->
